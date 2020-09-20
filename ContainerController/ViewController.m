@@ -6,8 +6,11 @@
 //
 
 #import "ViewController.h"
+#import "KYContainerController.h"
 
-@interface ViewController ()
+@interface ViewController () <KYContainerControllerDelegate>
+
+@property (nonatomic, readwrite, strong) KYContainerController *container;
 
 @end
 
@@ -15,8 +18,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    KYContainerLayout *layout = [[KYContainerLayout alloc] init];
+    layout.startPosition = KYContainerMoveTypeHide;
+    layout.backgroundShadowShow = YES;
+    layout.positions = [KYContainerPosition positionWithTop:70 middle:250 bottom:70];
+    
+    KYContainerController *container = [[KYContainerController alloc] initWithViewController:self layout:layout];
+    container.view.cornerRadius = 15;
+    [container.view addShadow];
+    [container moveWithType:KYContainerMoveTypeTop];
+    container.delegate = self;
+    container.shadowButton.userInteractionEnabled = YES;
+    self.container = container;
 }
 
+- (void)containerControllerShadowClickWithContainerController:(KYContainerController *)containerController {
+    [containerController removeWithCompletion:^{}];
+}
 
 @end

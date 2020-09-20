@@ -1,0 +1,19 @@
+//
+//  PrefixHeader.pch
+//  ContainerController
+//
+//  Created by 黄珂耀 on 2020/9/20.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <UIKit/UIKit.h>
+#import "KYContainerController.h"
+#import "KYContainerLayout.h"
+#import "KYContainerView.h"
+#import "KYContainerDevice.h"
+#import "KYContainerTypes.h"
+#import "KYContainerControllerDelegate.h"
+
+#endif /* PrefixHeader_pch */
