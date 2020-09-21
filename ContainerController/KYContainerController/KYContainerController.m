@@ -45,7 +45,7 @@
 - (CGFloat)topBarHeight {
     CGFloat result = 0.0;
     UINavigationController *vc = self.viewController.navigationController;
-    if (vc && !vc.isNavigationBarHidden) {
+    if (vc && !vc.isNavigationBarHidden && !vc.navigationBar.translucent) {
         CGFloat statusBarHeight = KYContainerDevice.statusBarHeight;
         CGFloat navBarHeight = vc.navigationBar.frame.size.height;
         result = statusBarHeight + navBarHeight;
