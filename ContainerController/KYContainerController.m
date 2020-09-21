@@ -371,7 +371,7 @@
 
 #pragma mark - Create Container-View
 - (void)createContainerView {
-    CGRect frame = CGRectMake(0, 0, [self deviceWidth], [self deviceHeight] * 2);
+    CGRect frame = CGRectMake(0, 0, self.deviceWidth, self.deviceHeight * 2);
     self.view = [[KYContainerView alloc] initWithFrame:frame];
     self.view.backgroundColor = UIColor.whiteColor;
     [self.viewController.view addSubview:self.view];
@@ -411,7 +411,7 @@
 - (void)addFooterView:(UIView *)footerView {
     [self removeFooterView];
     self.footerView = footerView;
-    [self.view.contentView addSubview:footerView];
+    [self.view addSubview:footerView];
     [self calculationViews];
 }
 
@@ -486,7 +486,7 @@
 #pragma mark - Calculation Views Size
 - (void)calculationViews {
     [self calculationView];
-    [self calculationScrollViewHeightWithPosition:-1.0 animation:NO from:KYContainerFromTypeCustom velocity:0.0 moveType:KYContainerMoveTypeCustom moveTypeOld:KYContainerMoveTypeCustom];
+    [self calculationScrollViewHeight];
 }
 
 - (void)calculationView {
@@ -497,19 +497,24 @@
     CGFloat x = self.insetsLeft;
     CGFloat width = (self.deviceWidth - self.insetsRight - self.insetsLeft);
     CGFloat height = self.deviceHeight * 2;
+    self.view.frame = CGRectMake(x, self.view.frame.origin.y, width, height);
     
     if (_headerView) {
-        self.headerView.frame = CGRectMake(0, 0, width, height);
+        self.headerView.frame = CGRectMake(0, 0, width, self.headerView.frame.size.height);
     }
     if (_footerView) {
-        self.footerView.frame = CGRectMake(x, self.footerView.frame.origin.y, width, height);
+        self.footerView.frame = CGRectMake(x, self.footerView.frame.origin.y, width, self.footerView.frame.size.height);
         [self changeFooterView];
     }
 }
 
 #pragma mark - Calculation ScrollView Size
+- (void)calculationScrollViewHeight {
+    [self calculationScrollViewHeightWithFrom:KYContainerFromTypeCustom];
+}
+
 - (void)calculationScrollViewHeightWithFrom:(KYContainerFromType)from {
-    [self calculationScrollViewHeightWithPosition:from animation:NO from:KYContainerFromTypeCustom velocity:0.0 moveType:KYContainerMoveTypeCustom moveTypeOld:KYContainerMoveTypeCustom];
+    [self calculationScrollViewHeightWithPosition:-1.0 animation:NO from:from velocity:0.0 moveType:KYContainerMoveTypeCustom moveTypeOld:KYContainerMoveTypeCustom];
 }
 
 - (void)calculationScrollViewHeightWithPosition:(CGFloat)position animation:(BOOL)animation from:(KYContainerFromType)from velocity:(CGFloat)velocity moveType:(KYContainerMoveType)moveType moveTypeOld:(KYContainerMoveType)moveTypeOld {
@@ -534,7 +539,7 @@
     CGFloat bottom = self.layout.scrollInsets.bottom + scrollInsetsBottom;
     
     CGFloat indicatorTop = self.layout.scrollIndicatorInsets.top;
-    CGFloat indicatorBottom = self.layout.scrollIndicatorInsets.bottom;
+    CGFloat indicatorBottom = self.layout.scrollIndicatorInsets.bottom + scrollInsetsBottom;
     
     CGFloat containerViewPositionY = 0.0;
     if (position == -1.0) {

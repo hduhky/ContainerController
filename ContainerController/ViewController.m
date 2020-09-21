@@ -35,6 +35,11 @@
     tableView.dataSource = self;
     [container addScrollView:tableView];
     
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(0, 0, 375, 60);
+    [button setBackgroundColor:[UIColor greenColor]];
+    [container addFooterView:button];
+    
     [container moveWithType:KYContainerMoveTypeTop];
 }
 

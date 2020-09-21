@@ -107,7 +107,9 @@
 
 #pragma mark - StatusBar Height
 + (CGFloat)statusBarHeight {
-    return 0;
+    CGFloat height = 0.0;
+    height = UIApplication.sharedApplication.statusBarFrame.size.height;
+    return height;
 }
 
 #pragma mark - Orientation
