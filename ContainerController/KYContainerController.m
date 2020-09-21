@@ -1014,8 +1014,8 @@
     
     UIPanGestureRecognizer *gesture = scrollView.panGestureRecognizer;
     
-    CGFloat inViewVelocityY = [gesture velocityInView:self.view].y;
-    CGFloat inViewTranslationY = [gesture translationInView:self.view].y;
+    CGFloat inViewVelocityY = [gesture velocityInView:self.viewController.view].y;
+    CGFloat inViewTranslationY = [gesture translationInView:self.viewController.view].y;
     
     if (gesture.state != UIGestureRecognizerStatePossible && scrollView.contentOffset.y <= 0) {
         scrollView.showsVerticalScrollIndicator = NO;
@@ -1048,15 +1048,16 @@
         
         if (ty < top) {
             ty = top;
-            CGAffineTransform transform;
-            transform.a = self.scrollTransform.a;
-            transform.b = self.scrollTransform.b;
-            transform.c = self.scrollTransform.c;
-            transform.d = self.scrollTransform.d;
-            transform.tx = self.scrollTransform.tx;
-            transform.ty = ty;
-            self.scrollTransform = transform;
+
         }
+        CGAffineTransform transform;
+        transform.a = self.scrollTransform.a;
+        transform.b = self.scrollTransform.b;
+        transform.c = self.scrollTransform.c;
+        transform.d = self.scrollTransform.d;
+        transform.tx = self.scrollTransform.tx;
+        transform.ty = ty;
+        self.scrollTransform = transform;
         
         if (self.scrollBegin) {
             __weak typeof(self) weakSelf = self;
@@ -1102,15 +1103,15 @@
                 
                 if (ty < top) {
                     ty = top;
-                    CGAffineTransform transform;
-                    transform.a = self.scrollTransform.a;
-                    transform.b = self.scrollTransform.b;
-                    transform.c = self.scrollTransform.c;
-                    transform.d = self.scrollTransform.d;
-                    transform.tx = self.scrollTransform.tx;
-                    transform.ty = ty;
-                    self.scrollTransform = transform;
                 }
+                CGAffineTransform transform;
+                transform.a = self.scrollTransform.a;
+                transform.b = self.scrollTransform.b;
+                transform.c = self.scrollTransform.c;
+                transform.d = self.scrollTransform.d;
+                transform.tx = self.scrollTransform.tx;
+                transform.ty = ty;
+                self.scrollTransform = transform;
                 
                 CGFloat position = self.scrollTransform.ty;
                 KYContainerMoveType type = KYContainerMoveTypeTop;
