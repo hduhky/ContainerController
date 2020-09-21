@@ -41,6 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readwrite, assign) BOOL movingEnabled;
 
+@property (nonatomic, readwrite, assign) BOOL swipeToHide;
+
 @property (nonatomic, readwrite, assign) CGFloat footerPadding;
 
 @property (nonatomic, readwrite, assign) BOOL trackingPosition;

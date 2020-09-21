@@ -23,6 +23,7 @@
     layout.startPosition = KYContainerMoveTypeHide;
     layout.backgroundShadowShow = YES;
     layout.positions = [KYContainerPosition positionWithTop:70 middle:250 bottom:70];
+    layout.swipeToHide = YES;
     
     KYContainerController *container = [[KYContainerController alloc] initWithViewController:self layout:layout];
     self.container = container;

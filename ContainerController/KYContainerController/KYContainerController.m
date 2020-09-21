@@ -662,6 +662,9 @@
             }
         }
     }
+    if (self.layout.swipeToHide && type == KYContainerMoveTypeBottom) {
+        type = KYContainerMoveTypeHide;
+    }
     return type;
 }
 
