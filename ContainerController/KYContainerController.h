@@ -50,6 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithViewController:(UIViewController *)viewController layout:(KYContainerLayout *)layout;
 
 #pragma mark - Remove
+- (void)remove;
 - (void)removeWithCompletion:(dispatch_block_t)completion;
 
 #pragma mark - Rotated
@@ -122,7 +123,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Move
 - (void)moveWithType:(KYContainerMoveType)type;
 - (void)moveWithType:(KYContainerMoveType)type animation:(BOOL)animation;
+- (void)moveWithType:(KYContainerMoveType)type velocity:(CGFloat)velocity;
 - (void)moveWithType:(KYContainerMoveType)type completion:(dispatch_block_t)completion;
+- (void)moveWithType:(KYContainerMoveType)type animation:(BOOL)animation velocity:(CGFloat)velocity from:(KYContainerFromType)from;
 - (void)moveWithType:(KYContainerMoveType)type animation:(BOOL)animation velocity:(CGFloat)velocity from:(KYContainerFromType)from completion:(dispatch_block_t)completion;
 
 #pragma mark - Move Position
@@ -130,6 +133,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Move Animation
 - (void)moveWithPosition:(CGFloat)position animation:(BOOL)animation type:(KYContainerMoveType)type velocity:(CGFloat)velocity from:(KYContainerFromType)from completion:(dispatch_block_t)completion;
+
+#pragma mark - Scroll Delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView;
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 
 @end
 

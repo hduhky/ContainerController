@@ -7,7 +7,7 @@
 
 #import "KYContainerController.h"
 
-@interface KYContainerController () <UIGestureRecognizerDelegate>
+@interface KYContainerController () <UIGestureRecognizerDelegate, UIScrollViewDelegate>
 
 #pragma mark - Properties Scroll
 @property (nonatomic, readwrite, assign) CGAffineTransform oldTransform;
@@ -180,6 +180,10 @@
 }
 
 #pragma mark - Remove
+- (void)remove {
+    [self removeWithCompletion:^{}];
+}
+
 - (void)removeWithCompletion:(dispatch_block_t)completion {
     __weak typeof(self) weakSelf = self;
     [self moveWithType:KYContainerMoveTypeHide completion:^{
@@ -428,6 +432,10 @@
     scrollView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
     scrollView.scrollEnabled = (self.moveType == KYContainerMoveTypeTop);
     
+    if (!scrollView.delegate) {
+        scrollView.delegate = self;
+    }
+    
     [self.view.contentView addSubview:scrollView];
     [self calculationViews];
 }
@@ -661,8 +669,16 @@
     [self moveWithType:type animation:animation velocity:0.0 from:KYContainerFromTypeCustom completion:^{}];
 }
 
+- (void)moveWithType:(KYContainerMoveType)type velocity:(CGFloat)velocity {
+    [self moveWithType:type animation:YES velocity:velocity from:KYContainerFromTypeCustom];
+}
+
 - (void)moveWithType:(KYContainerMoveType)type completion:(dispatch_block_t)completion {
     [self moveWithType:type animation:YES velocity:0.0 from:KYContainerFromTypeCustom completion:completion];
+}
+
+- (void)moveWithType:(KYContainerMoveType)type animation:(BOOL)animation velocity:(CGFloat)velocity from:(KYContainerFromType)from {
+    [self moveWithType:type animation:animation velocity:velocity from:from completion:^{}];
 }
 
 - (void)moveWithType:(KYContainerMoveType)type animation:(BOOL)animation velocity:(CGFloat)velocity from:(KYContainerFromType)from completion:(dispatch_block_t)completion {
@@ -989,5 +1005,155 @@
 #pragma mark - Collection DelegateFlowLayout
 
 #pragma mark - Scroll Delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    UIPanGestureRecognizer *gesture = scrollView.panGestureRecognizer;
+    
+    CGFloat inViewVelocityY = [gesture velocityInView:self.view].y;
+    CGFloat inViewTranslationY = [gesture translationInView:self.view].y;
+    
+    if (gesture.state != UIGestureRecognizerStatePossible && scrollView.contentOffset.y <= 0) {
+        scrollView.showsVerticalScrollIndicator = NO;
+        scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
+    } else {
+        scrollView.showsVerticalScrollIndicator = YES;
+    }
+    
+    if (scrollView.contentOffset.y == 0 && inViewVelocityY > 0) {
+        self.scrollBordersRunContainer = YES;
+    } else {
+        self.scrollBordersRunContainer = NO;
+    }
+    
+    self.scrollTransform = self.view.transform;
+    
+    CGFloat top = self.positionTop;
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        self.scrollOnceBeginDragging = NO;
+    }
+    
+    if (self.scrollBordersRunContainer) {
+        [self.view.layer removeAllAnimations];
+        
+        self.scrollOnceEnded = NO;
+        self.scrollOnceBeginDragging = NO;
+        
+        CGFloat ty = ((top - self.scrollStartPosition) + inViewTranslationY);
+        
+        if (ty < top) {
+            ty = top;
+            CGAffineTransform transform;
+            transform.a = self.scrollTransform.a;
+            transform.b = self.scrollTransform.b;
+            transform.c = self.scrollTransform.c;
+            transform.d = self.scrollTransform.d;
+            transform.tx = self.scrollTransform.tx;
+            transform.ty = ty;
+            self.scrollTransform = transform;
+        }
+        
+        if (self.scrollBegin) {
+            __weak typeof(self) weakSelf = self;
+            [self animationSpringWithDuration:0.325 animations:^{
+                            __strong typeof(self) strongSelf = weakSelf;
+                            if (!strongSelf) {
+                                return;
+                            }
+                            [strongSelf changeViewWithTransform:strongSelf.scrollTransform];
+            }];
+            
+            self.scrollBegin = NO;
+        } else {
+            [self changeViewWithTransform:self.scrollTransform];
+        }
+        
+        CGFloat position = self.scrollTransform.ty;
+        KYContainerMoveType type = KYContainerMoveTypeTop;
+        KYContainerFromType from = KYContainerFromTypeScrollBorder;
+        BOOL animation = NO;
+        
+        [self shadowLevelAlphaWithPosition:position animation:NO];
+        [self changeFooterViewWithPosition:position];
+        [self calculationScrollViewHeightWithFrom:from];
+        [self changeMoveWithPosition:position type:type animation:animation];
+        
+        if (gesture.state == UIGestureRecognizerStateEnded) {
+            [self moveWithType:ty animation:YES velocity:inViewVelocityY from:from];
+        }
+    } else {
+        if (top == self.scrollTransform.ty && !self.scrollOnceBeginDragging) {
+            self.scrollOnceBeginDragging = YES;
+        }
+        
+        if (top < self.scrollTransform.ty) {
+            if (inViewVelocityY < 0.0) {
+                if (self.moveType == KYContainerMoveTypeTop) {
+                    scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
+                }
+                
+                self.scrollTransform = self.view.transform;
+                CGFloat ty = ((top - self.scrollStartPosition) + inViewTranslationY);
+                
+                if (ty < top) {
+                    ty = top;
+                    CGAffineTransform transform;
+                    transform.a = self.scrollTransform.a;
+                    transform.b = self.scrollTransform.b;
+                    transform.c = self.scrollTransform.c;
+                    transform.d = self.scrollTransform.d;
+                    transform.tx = self.scrollTransform.tx;
+                    transform.ty = ty;
+                    self.scrollTransform = transform;
+                }
+                
+                CGFloat position = self.scrollTransform.ty;
+                KYContainerMoveType type = KYContainerMoveTypeTop;
+                KYContainerFromType from = KYContainerFromTypeScroll;
+                BOOL animation = NO;
+                
+                [self changeViewWithTransform:self.scrollTransform];
+                [self shadowLevelAlphaWithPosition:position animation:NO];
+                [self changeFooterViewWithPosition:position];
+                [self calculationScrollViewHeightWithFrom:from];
+                [self changeMoveWithPosition:position type:type animation:animation];
+            }
+        }
+    }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    self.isScrolling = YES;
+    
+    self.scrollStartPosition = scrollView.contentOffset.y;
+    
+    self.scrollBegin = YES;
+    
+    if (self.scrollStartPosition < 0) {
+        self.scrollStartPosition = 0;
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    self.isScrolling = NO;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+        self.isScrolling = NO;
+    }
+    
+    UIPanGestureRecognizer *gesture = scrollView.panGestureRecognizer;
+    
+    CGFloat inViewVelocityY = [gesture velocityInView:self.view].y;
+    
+    if (!self.scrollOnceEnded) {
+        self.scrollOnceEnded = YES;
+        
+        KYContainerMoveType type = [self calculatePositionTypeFromWithVelocity:inViewVelocityY];
+        
+        [self moveWithType:type velocity:inViewVelocityY];
+    }
+}
 
 @end
