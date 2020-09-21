@@ -710,7 +710,7 @@
         case KYContainerMoveTypeBottom:
             return self.positionBottom;
         case KYContainerMoveTypeHide:
-            return self.deviceHeight;
+            return KYContainerDevice.height;
         case KYContainerMoveTypeCustom:
             return 0.0;
     }
