@@ -42,7 +42,6 @@
 		0A1409252515E94D00191107 /* KYContainerTypes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYContainerTypes.m; sourceTree = "<group>"; };
 		0A1409292515ED5C00191107 /* KYContainerDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYContainerDevice.h; sourceTree = "<group>"; };
 		0A14092A2515ED5C00191107 /* KYContainerDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYContainerDevice.m; sourceTree = "<group>"; };
-		0ABA38242516EB430046D7B1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +89,6 @@
 				0A1409292515ED5C00191107 /* KYContainerDevice.h */,
 				0A14092A2515ED5C00191107 /* KYContainerDevice.m */,
 				0A1409232515E90A00191107 /* KYContainerControllerDelegate.h */,
-				0ABA38242516EB430046D7B1 /* PrefixHeader.pch */,
 				0A1409002515E68700191107 /* Main.storyboard */,
 				0A1409032515E68700191107 /* Assets.xcassets */,
 				0A1409052515E68700191107 /* LaunchScreen.storyboard */,
@@ -323,7 +321,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9HHE36XQ8;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/ContainerController/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = ContainerController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -344,7 +342,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9HHE36XQ8;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/ContainerController/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = ContainerController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
