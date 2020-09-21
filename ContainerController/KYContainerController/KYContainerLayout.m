@@ -58,6 +58,7 @@
     if (self) {
         _startPosition = KYContainerMoveTypeHide;
         _movingEnabled = YES;
+        _swipeToHide = NO;
         _footerPadding = 0.0;
         _trackingPosition = NO;
         _scrollInsets = UIEdgeInsetsZero;
