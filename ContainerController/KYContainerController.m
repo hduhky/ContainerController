@@ -548,7 +548,7 @@
         containerViewPositionY = position;
     }
     
-    CGFloat width = (self.deviceHeight - self.insetsRight - self.insetsLeft);
+    CGFloat width = (self.deviceWidth - self.insetsRight - self.insetsLeft);
     CGFloat height = (self.deviceHeight - (headerHeight + footerInsets + containerViewPositionY));
     
     if (height < 0) {
