@@ -411,7 +411,7 @@
 - (void)addFooterView:(UIView *)footerView {
     [self removeFooterView];
     self.footerView = footerView;
-    [self.view addSubview:footerView];
+    [self.viewController.view addSubview:footerView];
     [self calculationViews];
 }
 

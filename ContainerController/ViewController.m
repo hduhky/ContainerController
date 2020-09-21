@@ -35,10 +35,15 @@
     tableView.dataSource = self;
     [container addScrollView:tableView];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake(0, 0, 375, 60);
-    [button setBackgroundColor:[UIColor greenColor]];
-    [container addFooterView:button];
+    UIButton *header = [UIButton buttonWithType:UIButtonTypeSystem];
+    header.frame = CGRectMake(0, 0, 375, 60);
+    [header setBackgroundColor:[UIColor greenColor]];
+    [container addHeaderView:header];
+    
+    UIButton *footer = [UIButton buttonWithType:UIButtonTypeSystem];
+    footer.frame = CGRectMake(0, 0, 375, 60);
+    [footer setBackgroundColor:[UIColor greenColor]];
+    [container addFooterView:footer];
     
     [container moveWithType:KYContainerMoveTypeTop];
 }
