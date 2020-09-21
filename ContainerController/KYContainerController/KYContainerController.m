@@ -448,7 +448,7 @@
     switch (gesture.state) {
         case UIGestureRecognizerStateBegan:
             self.panBeginSavePosition = self.view.transform.ty;
-            break;;
+            break;
         case UIGestureRecognizerStateChanged: {
             CGAffineTransform transform = self.view.transform;
             transform.ty = self.panBeginSavePosition + [gesture translationInView:self.view].y;
@@ -734,21 +734,21 @@
     
     CGAffineTransform transform = CGAffineTransformMakeTranslation(0, position);
     
-    __weak typeof(self) weakSelf = self;
-    dispatch_block_t animationComp = ^{
-        __strong typeof(self) strongSelf = weakSelf;
-        if (!strongSelf) {
-            return;
-        }
-        [strongSelf changeViewWithTransform:transform];
-        if (!strongSelf.layout.trackingPosition) {
-            [strongSelf changeFooterViewWithPosition:position];
-            [strongSelf calculationScrollViewHeightWithPosition:position animation:animation from:from velocity:velocity moveType:type moveTypeOld:oldMove];
-        }
-        [strongSelf changeMoveWithPosition:position type:type animation:YES];
-    };
-    
     if (animation) {
+        __weak typeof(self) weakSelf = self;
+        dispatch_block_t animationComp = ^{
+            __strong typeof(self) strongSelf = weakSelf;
+            if (!strongSelf) {
+                return;
+            }
+            [strongSelf changeViewWithTransform:transform];
+            if (!strongSelf.layout.trackingPosition) {
+                [strongSelf changeFooterViewWithPosition:position];
+                [strongSelf calculationScrollViewHeightWithPosition:position animation:animation from:from velocity:velocity moveType:type moveTypeOld:oldMove];
+            }
+            [strongSelf changeMoveWithPosition:position type:type animation:YES];
+        };
+        
         [self animationSpringFromWithForce:velocity type:type animations:animationComp completion:completion];
     } else {
         [self changeFooterViewWithPosition:position];
