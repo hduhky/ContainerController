@@ -18,13 +18,17 @@
     return self;
 }
 
-- (instancetype)init {
-    self = [super initWithFrame:CGRectZero];
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
         _contentView = [self fromNib];
         [self loadedFromNib];
     }
     return self;
+}
+
+- (instancetype)init {
+    return [self initWithFrame:CGRectZero];
 }
 
 - (void)loadedFromNib {

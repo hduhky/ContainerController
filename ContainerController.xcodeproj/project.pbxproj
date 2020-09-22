@@ -20,7 +20,6 @@
 		0A14090A2515E68700191107 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1409092515E68700191107 /* main.m */; };
 		4F7FFCAA25199745006F764B /* KYDesignButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FFCA925199745006F764B /* KYDesignButton.m */; };
 		4F7FFCAD2519CE9C006F764B /* KYXibView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FFCAC2519CE9C006F764B /* KYXibView.m */; };
-		4F7FFCB72519E5E8006F764B /* KYButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FFCB62519E5E8006F764B /* KYButton.m */; };
 		4F7FFCBC2519E613006F764B /* KYDemoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FFCBB2519E613006F764B /* KYDemoView.xib */; };
 		4F7FFCBF2519EA15006F764B /* KYDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FFCBE2519EA15006F764B /* KYDemoView.m */; };
 /* End PBXBuildFile section */
@@ -51,8 +50,6 @@
 		4F7FFCA925199745006F764B /* KYDesignButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYDesignButton.m; sourceTree = "<group>"; };
 		4F7FFCAB2519CE9C006F764B /* KYXibView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYXibView.h; sourceTree = "<group>"; };
 		4F7FFCAC2519CE9C006F764B /* KYXibView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYXibView.m; sourceTree = "<group>"; };
-		4F7FFCB52519E5E8006F764B /* KYButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYButton.h; sourceTree = "<group>"; };
-		4F7FFCB62519E5E8006F764B /* KYButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYButton.m; sourceTree = "<group>"; };
 		4F7FFCBB2519E613006F764B /* KYDemoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KYDemoView.xib; sourceTree = "<group>"; };
 		4F7FFCBD2519EA15006F764B /* KYDemoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYDemoView.h; sourceTree = "<group>"; };
 		4F7FFCBE2519EA15006F764B /* KYDemoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYDemoView.m; sourceTree = "<group>"; };
@@ -114,8 +111,6 @@
 				4F7FFCBD2519EA15006F764B /* KYDemoView.h */,
 				4F7FFCBE2519EA15006F764B /* KYDemoView.m */,
 				4F7FFCBB2519E613006F764B /* KYDemoView.xib */,
-				4F7FFCB52519E5E8006F764B /* KYButton.h */,
-				4F7FFCB62519E5E8006F764B /* KYButton.m */,
 				4F7FFCAB2519CE9C006F764B /* KYXibView.h */,
 				4F7FFCAC2519CE9C006F764B /* KYXibView.m */,
 				4F7FFCA825199745006F764B /* KYDesignButton.h */,
@@ -208,7 +203,6 @@
 				0A00A63D2518904F0037B0A9 /* KYContainerController.m in Sources */,
 				4F7FFCAD2519CE9C006F764B /* KYXibView.m in Sources */,
 				0A14090A2515E68700191107 /* main.m in Sources */,
-				4F7FFCB72519E5E8006F764B /* KYButton.m in Sources */,
 				0A00A63B2518904F0037B0A9 /* KYContainerTypes.m in Sources */,
 				4F7FFCAA25199745006F764B /* KYDesignButton.m in Sources */,
 				4F7FFCBF2519EA15006F764B /* KYDemoView.m in Sources */,

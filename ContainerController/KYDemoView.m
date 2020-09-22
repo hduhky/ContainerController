@@ -16,9 +16,8 @@
 
 @implementation KYDemoView
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
+- (void)loadedFromNib {
+    [super loadedFromNib];
     self.separatorView.backgroundColor = UIColor.greenColor;
     self.separatorHeight.constant = 10;
 }

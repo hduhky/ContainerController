@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "KYContainerController.h"
+#import "KYDemoView.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -18,6 +19,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    KYDemoView *view = [[KYDemoView alloc] init];
+    view.frame = CGRectMake(0, 200, KYContainerDevice.width, 200);
+    [self.view addSubview:view];
     
     KYContainerLayout *layout = [[KYContainerLayout alloc] init];
     layout.startPosition = KYContainerMoveTypeHide;

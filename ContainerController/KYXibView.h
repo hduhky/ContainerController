@@ -13,10 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) UIView *contentView;
 
-- (instancetype)initWithCoder:(NSCoder *)coder;
-
-- (instancetype)init;
-
 - (void)loadedFromNib;
 
 @end
