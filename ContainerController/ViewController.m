@@ -22,30 +22,30 @@
     KYContainerLayout *layout = [[KYContainerLayout alloc] init];
     layout.startPosition = KYContainerMoveTypeHide;
     layout.backgroundShadowShow = YES;
-    layout.positions = [KYContainerPosition positionWithTop:70 middle:250 bottom:70];
+    layout.positions = [KYContainerPosition positionWithTop:200 middle:250 bottom:70];
     layout.swipeToHide = YES;
-    
+
     KYContainerController *container = [[KYContainerController alloc] initWithViewController:self layout:layout];
     self.container = container;
     container.view.cornerRadius = 15;
     [container.view addShadow];
-    
+
     UITableView *tableView = [[UITableView alloc] init];
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     tableView.delegate = self;
     tableView.dataSource = self;
     [container addScrollView:tableView];
-    
+
     UIButton *header = [UIButton buttonWithType:UIButtonTypeSystem];
     header.frame = CGRectMake(0, 0, 375, 60);
     [header setBackgroundColor:[UIColor greenColor]];
     [container addHeaderView:header];
-    
+
     UIButton *footer = [UIButton buttonWithType:UIButtonTypeSystem];
     footer.frame = CGRectMake(0, 0, 375, 60);
     [footer setBackgroundColor:[UIColor greenColor]];
     [container addFooterView:footer];
-    
+
     [container moveWithType:KYContainerMoveTypeTop];
 }
 
