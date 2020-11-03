@@ -18,10 +18,13 @@
 		0A1409042515E68700191107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A1409032515E68700191107 /* Assets.xcassets */; };
 		0A1409072515E68700191107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1409052515E68700191107 /* LaunchScreen.storyboard */; };
 		0A14090A2515E68700191107 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1409092515E68700191107 /* main.m */; };
+		4F3C8AA32550E8A30048C97E /* KYDemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3C8AA22550E8A30048C97E /* KYDemoTableViewController.m */; };
+		4F3C8AB0255125FC0048C97E /* KYDemoTableViewController+KYContainerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3C8AAB25510B230048C97E /* KYDemoTableViewController+KYContainerHelper.m */; };
 		4F7FFCAA25199745006F764B /* KYDesignButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FFCA925199745006F764B /* KYDesignButton.m */; };
 		4F7FFCAD2519CE9C006F764B /* KYXibView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FFCAC2519CE9C006F764B /* KYXibView.m */; };
 		4F7FFCBC2519E613006F764B /* KYDemoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FFCBB2519E613006F764B /* KYDemoView.xib */; };
 		4F7FFCBF2519EA15006F764B /* KYDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FFCBE2519EA15006F764B /* KYDemoView.m */; };
+		4F94ED4025357C1700F9D3A9 /* KYTestButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F94ED3F25357C1700F9D3A9 /* KYTestButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,10 @@
 		0A1409062515E68700191107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A1409082515E68700191107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A1409092515E68700191107 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4F3C8AA12550E8A30048C97E /* KYDemoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYDemoTableViewController.h; sourceTree = "<group>"; };
+		4F3C8AA22550E8A30048C97E /* KYDemoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYDemoTableViewController.m; sourceTree = "<group>"; };
+		4F3C8AAA25510B230048C97E /* KYDemoTableViewController+KYContainerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KYDemoTableViewController+KYContainerHelper.h"; sourceTree = "<group>"; };
+		4F3C8AAB25510B230048C97E /* KYDemoTableViewController+KYContainerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "KYDemoTableViewController+KYContainerHelper.m"; sourceTree = "<group>"; };
 		4F7FFCA825199745006F764B /* KYDesignButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYDesignButton.h; sourceTree = "<group>"; };
 		4F7FFCA925199745006F764B /* KYDesignButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYDesignButton.m; sourceTree = "<group>"; };
 		4F7FFCAB2519CE9C006F764B /* KYXibView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYXibView.h; sourceTree = "<group>"; };
@@ -53,6 +60,8 @@
 		4F7FFCBB2519E613006F764B /* KYDemoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KYDemoView.xib; sourceTree = "<group>"; };
 		4F7FFCBD2519EA15006F764B /* KYDemoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYDemoView.h; sourceTree = "<group>"; };
 		4F7FFCBE2519EA15006F764B /* KYDemoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYDemoView.m; sourceTree = "<group>"; };
+		4F94ED3E25357C1700F9D3A9 /* KYTestButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYTestButton.h; sourceTree = "<group>"; };
+		4F94ED3F25357C1700F9D3A9 /* KYTestButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYTestButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,11 +117,17 @@
 				0A1408F82515E68700191107 /* AppDelegate.m */,
 				0A1408FD2515E68700191107 /* ViewController.h */,
 				0A1408FE2515E68700191107 /* ViewController.m */,
+				4F3C8AA12550E8A30048C97E /* KYDemoTableViewController.h */,
+				4F3C8AA22550E8A30048C97E /* KYDemoTableViewController.m */,
+				4F3C8AAA25510B230048C97E /* KYDemoTableViewController+KYContainerHelper.h */,
+				4F3C8AAB25510B230048C97E /* KYDemoTableViewController+KYContainerHelper.m */,
 				4F7FFCBD2519EA15006F764B /* KYDemoView.h */,
 				4F7FFCBE2519EA15006F764B /* KYDemoView.m */,
 				4F7FFCBB2519E613006F764B /* KYDemoView.xib */,
 				4F7FFCAB2519CE9C006F764B /* KYXibView.h */,
 				4F7FFCAC2519CE9C006F764B /* KYXibView.m */,
+				4F94ED3E25357C1700F9D3A9 /* KYTestButton.h */,
+				4F94ED3F25357C1700F9D3A9 /* KYTestButton.m */,
 				4F7FFCA825199745006F764B /* KYDesignButton.h */,
 				4F7FFCA925199745006F764B /* KYDesignButton.m */,
 				0A1409002515E68700191107 /* Main.storyboard */,
@@ -196,14 +211,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1408FF2515E68700191107 /* ViewController.m in Sources */,
+				4F94ED4025357C1700F9D3A9 /* KYTestButton.m in Sources */,
 				0A00A63C2518904F0037B0A9 /* KYContainerView.m in Sources */,
 				0A00A63A2518904F0037B0A9 /* KYContainerLayout.m in Sources */,
 				0A00A6392518904F0037B0A9 /* KYContainerDevice.m in Sources */,
 				0A1408F92515E68700191107 /* AppDelegate.m in Sources */,
+				4F3C8AB0255125FC0048C97E /* KYDemoTableViewController+KYContainerHelper.m in Sources */,
 				0A00A63D2518904F0037B0A9 /* KYContainerController.m in Sources */,
 				4F7FFCAD2519CE9C006F764B /* KYXibView.m in Sources */,
 				0A14090A2515E68700191107 /* main.m in Sources */,
 				0A00A63B2518904F0037B0A9 /* KYContainerTypes.m in Sources */,
+				4F3C8AA32550E8A30048C97E /* KYDemoTableViewController.m in Sources */,
 				4F7FFCAA25199745006F764B /* KYDesignButton.m in Sources */,
 				4F7FFCBF2519EA15006F764B /* KYDemoView.m in Sources */,
 			);

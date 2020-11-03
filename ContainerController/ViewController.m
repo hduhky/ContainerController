@@ -8,8 +8,10 @@
 #import "ViewController.h"
 #import "KYContainerController.h"
 #import "KYDemoView.h"
+#import "KYDemoTableViewController.h"
+#import "KYDemoTableViewController+KYContainerHelper.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ViewController ()
 
 @property (nonatomic, readwrite, strong) KYContainerController *container;
 
@@ -27,19 +29,17 @@
     KYContainerLayout *layout = [[KYContainerLayout alloc] init];
     layout.startPosition = KYContainerMoveTypeHide;
     layout.backgroundShadowShow = YES;
-    layout.positions = [KYContainerPosition positionWithTop:200 middle:250 bottom:70];
-    layout.swipeToHide = YES;
+    layout.positions = [KYContainerPosition positionWithTop:50 middle:250 bottom:70];
 
     KYContainerController *container = [[KYContainerController alloc] initWithViewController:self layout:layout];
     self.container = container;
     container.view.cornerRadius = 15;
     [container.view addShadow];
-
-    UITableView *tableView = [[UITableView alloc] init];
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [container addScrollView:tableView];
+    
+    KYDemoTableViewController *tableViewController = [[KYDemoTableViewController alloc] init];
+    tableViewController.container = self.container;
+    [self addChildViewController:tableViewController];
+    [container addScrollView:tableViewController.tableView];
 
     UIButton *header = [UIButton buttonWithType:UIButtonTypeSystem];
     header.frame = CGRectMake(0, 0, 375, 60);
@@ -59,34 +59,5 @@
     [self.container remove];
     self.container = nil;
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"No:%@", @(indexPath.row)];
-    return cell;
-}
-
-#pragma mark - Scroll Delegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.container scrollViewDidScroll:scrollView];
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [self.container scrollViewWillBeginDragging:scrollView];
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self.container scrollViewDidEndDecelerating:scrollView];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    [self.container scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
-}
-
-
 
 @end
